@@ -1,4 +1,4 @@
-# Configuration for Llama-2-7B context length analysis
+# Configuration for Llama-2-7B context length evaluation
 # Author: Ebenezer Tarubinga, Korea University
 
 model:
@@ -19,11 +19,11 @@ context_lengths:
   test_lengths: [1024, 2048, 4096, 8192, 16384, 32768]
   # Note: lengths beyond declared_max require RoPE scaling or NTK-aware interpolation
 
-analysis:
-  layers_to_analyze: [0, 4, 8, 12, 16, 20, 24, 28, 31]
+evaluation:
+  layers_to_evaluate: [0, 4, 8, 12, 16, 20, 24, 28, 31]
   attention_entropy: true
   effective_span: true
-  sink_token_analysis: true
+  sink_token_study: true
   num_sink_tokens: 4
 
 benchmark:

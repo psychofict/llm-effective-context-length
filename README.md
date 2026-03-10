@@ -1,6 +1,6 @@
 # Investigating Why the Effective Context Length of LLMs Falls Short
 
-**Reproduction Study and Extended Analysis of STRING (ICLR 2025)**
+**Reproduction Study and Extended Evaluation of STRING (ICLR 2025)**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
@@ -18,7 +18,7 @@ sharply beyond certain thresholds.
 
 The STRING paper by An et al. (ICLR 2025) provides a systematic investigation of this
 gap and proposes remedies. This repository contains an **independent reproduction study
-and extended analysis** of their key findings, conducted as part of graduate research at
+and extended evaluation** of their key findings, conducted as part of graduate research at
 Korea University.
 
 ## Key Findings
@@ -63,9 +63,9 @@ above 90% of the 4K-token baseline.
 ## Repository Structure
 
 ```
-llm-context-length-analysis/
-├── analysis/
-│   ├── attention_pattern_analysis.py    # Attention entropy and span analysis
+llm-context-length-study/
+├── evaluation/
+│   ├── attention_patterns.py            # Attention entropy and span examination
 │   ├── positional_encoding_decay.py     # RoPE/ALiBi decay characterization
 │   ├── effective_length_benchmark.py    # RULER-style evaluation suite
 │   └── data_preparation_pipeline.py     # Long-document tokenization pipeline
@@ -79,9 +79,9 @@ llm-context-length-analysis/
 │   ├── mistral_7b.yaml
 │   └── qwen2_7b.yaml
 ├── notebooks/
-│   └── context_length_exploration.py    # Interactive analysis (percent-percent cells)
+│   └── context_length_exploration.py    # Interactive exploration (percent-percent cells)
 ├── docs/
-│   └── ANALYSIS_NOTES.md               # Detailed written analysis
+│   └── STUDY_NOTES.md                  # Detailed written study
 ├── results/
 │   ├── figures/
 │   └── tables/
@@ -95,8 +95,8 @@ llm-context-length-analysis/
 ### 1. Clone and install dependencies
 
 ```bash
-git clone https://github.com/ebenezer-tarubinga/llm-context-length-analysis.git
-cd llm-context-length-analysis
+git clone https://github.com/ebenezer-tarubinga/llm-context-length-study.git
+cd llm-context-length-study
 pip install -r requirements.txt
 ```
 
@@ -109,23 +109,23 @@ to gated models (Llama-2, Llama-3) by running:
 huggingface-cli login
 ```
 
-### 3. Run analysis
+### 3. Run evaluation
 
 ```bash
-# Attention pattern analysis
-python analysis/attention_pattern_analysis.py \
+# Attention pattern examination
+python evaluation/attention_patterns.py \
     --model_name meta-llama/Llama-2-7b-hf \
     --max_length 8192 \
     --output_dir results/figures
 
-# Positional encoding decay analysis
-python analysis/positional_encoding_decay.py \
+# Positional encoding decay study
+python evaluation/positional_encoding_decay.py \
     --head_dim 128 \
     --max_distance 32768 \
     --output_dir results/figures
 
 # RULER-style benchmark
-python analysis/effective_length_benchmark.py \
+python evaluation/effective_length_benchmark.py \
     --model_name meta-llama/Llama-2-7b-hf \
     --tasks needle multi_key variable_tracking \
     --lengths 4096 8192 16384 32768 \
@@ -150,7 +150,7 @@ Intelligence, under the supervision of Prof. Seong-Whan Lee.
 ```bibtex
 @misc{tarubinga2025contextlength,
   title   = {Investigating Why the Effective Context Length of LLMs Falls Short:
-             Reproduction Study and Extended Analysis},
+             Reproduction Study and Extended Evaluation},
   author  = {Tarubinga, Ebenezer},
   year    = {2025},
   note    = {Based on STRING by An et al. (ICLR 2025). Korea University M.Sc. AI,

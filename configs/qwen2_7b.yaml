@@ -1,4 +1,4 @@
-# Configuration for Qwen2-7B context length analysis
+# Configuration for Qwen2-7B context length evaluation
 # Author: Ebenezer Tarubinga, Korea University
 
 model:
@@ -20,11 +20,11 @@ context_lengths:
   declared_max: 32768
   test_lengths: [1024, 2048, 4096, 8192, 16384, 32768]
 
-analysis:
-  layers_to_analyze: [0, 4, 7, 10, 14, 18, 21, 24, 27]
+evaluation:
+  layers_to_evaluate: [0, 4, 7, 10, 14, 18, 21, 24, 27]
   attention_entropy: true
   effective_span: true
-  sink_token_analysis: true
+  sink_token_study: true
   num_sink_tokens: 4
 
 benchmark:

@@ -1,7 +1,7 @@
 """
-Attention Pattern Analysis for Long-Context LLMs.
+Attention Pattern Evaluation for Long-Context LLMs.
 
-Extracts and analyzes attention weight distributions across varying sequence
+Extracts and evaluates attention weight distributions across varying sequence
 lengths to characterize how attention entropy and effective span degrade as
 context grows. This provides empirical evidence for the gap between declared
 and effective context length.
@@ -199,7 +199,7 @@ def plot_span_vs_layer(
 
 def main() -> None:
     parser = argparse.ArgumentParser(
-        description="Analyze attention patterns across sequence lengths."
+        description="Evaluate attention patterns across sequence lengths."
     )
     parser.add_argument(
         "--model_name",
@@ -260,7 +260,7 @@ def main() -> None:
         seq_lengths.append(length)
         length *= 2
 
-    # Run analysis
+    # Run evaluation
     entropy_results: Dict[int, Dict[int, float]] = {}
     span_results: Dict[int, Dict[int, float]] = {}
 

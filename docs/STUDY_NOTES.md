@@ -1,4 +1,4 @@
-# Analysis Notes: Why the Effective Context Length of LLMs Falls Short
+# Study Notes: Why the Effective Context Length of LLMs Falls Short
 
 **Author:** Ebenezer Tarubinga, Korea University M.Sc. AI
 **Supervisor:** Prof. Seong-Whan Lee
@@ -74,7 +74,7 @@ decoder-only transformer LLMs, the first few tokens (typically the BOS token and
 first 2-4 content tokens) receive a disproportionately large share of attention mass
 from *all* query positions, regardless of the content of those tokens.
 
-In our analysis, we observe that these sink tokens absorb between 15% and 40% of total
+In our study, we observe that these sink tokens absorb between 15% and 40% of total
 attention probability mass, averaged across heads and layers. This fraction is relatively
 stable across sequence lengths -- whether the input is 1K or 32K tokens, the sinks still
 capture a similar absolute share. However, the *relative* impact increases with context

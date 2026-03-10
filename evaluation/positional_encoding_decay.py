@@ -1,5 +1,5 @@
 """
-Positional Encoding Decay Analysis.
+Positional Encoding Decay Study.
 
 Implements RoPE and ALiBi positional encoding schemes from scratch and
 characterizes their theoretical attention decay profiles as a function of
@@ -275,15 +275,15 @@ def plot_decay_comparison(
     print(f"Saved decay comparison plot to {output_path}")
 
 
-def print_breakdown_analysis(head_dim: int, max_distance: int) -> None:
-    """Print analysis of where positional encoding breaks down.
+def print_breakdown_study(head_dim: int, max_distance: int) -> None:
+    """Print study of where positional encoding breaks down.
 
     Args:
         head_dim: Head dimension.
-        max_distance: Maximum distance to analyze.
+        max_distance: Maximum distance to examine.
     """
     print("\n" + "=" * 60)
-    print(f"POSITIONAL ENCODING BREAKDOWN ANALYSIS (head_dim={head_dim})")
+    print(f"POSITIONAL ENCODING BREAKDOWN STUDY (head_dim={head_dim})")
     print("=" * 60)
 
     distances, scores = compute_rope_decay_curve(max_distance, head_dim, step=1)
@@ -300,7 +300,7 @@ def print_breakdown_analysis(head_dim: int, max_distance: int) -> None:
         print(f"  RoPE first negative score at distance: {first_negative:,}")
 
     # Compute the frequency at which different dimension pairs oscillate
-    print(f"\n  Dimension pair frequency analysis:")
+    print(f"\n  Dimension pair frequency examination:")
     dim_pairs = head_dim // 2
     freqs = 1.0 / (10000.0 ** (np.arange(0, dim_pairs) * 2.0 / head_dim))
     print(f"    Fastest frequency (pair 0): period = {2 * np.pi / freqs[0]:.1f}")
@@ -311,7 +311,7 @@ def print_breakdown_analysis(head_dim: int, max_distance: int) -> None:
 
 def main() -> None:
     parser = argparse.ArgumentParser(
-        description="Analyze positional encoding decay profiles."
+        description="Evaluate positional encoding decay profiles."
     )
     parser.add_argument(
         "--head_dim",
@@ -336,7 +336,7 @@ def main() -> None:
         "--max_distance",
         type=int,
         default=32768,
-        help="Maximum relative distance to analyze.",
+        help="Maximum relative distance to evaluate.",
     )
     parser.add_argument(
         "--output_dir",
@@ -363,8 +363,8 @@ def main() -> None:
         output_path=os.path.join(args.output_dir, "pe_decay_comparison.png"),
     )
 
-    # Print mathematical breakdown analysis
-    print_breakdown_analysis(args.head_dim, args.max_distance)
+    # Print mathematical breakdown study
+    print_breakdown_study(args.head_dim, args.max_distance)
 
 
 if __name__ == "__main__":

@@ -1,7 +1,7 @@
 # %% [markdown]
-# # Context Length Analysis: Interactive Exploration
+# # Context Length Study: Interactive Exploration
 #
-# This notebook walks through the full analysis pipeline for understanding
+# This notebook walks through the full evaluation pipeline for understanding
 # why the effective context length of LLMs falls short of their declared
 # maximum. We examine positional encoding decay, attention patterns, and
 # benchmark performance across multiple models.
@@ -40,7 +40,7 @@ print("Setup complete.")
 # zero -- this is the fundamental mechanism behind context length limitations.
 
 # %% Compute RoPE decay curves for different head dimensions
-from analysis.positional_encoding_decay import (
+from evaluation.positional_encoding_decay import (
     compute_rope_decay_curve,
     compute_alibi_decay_curve,
     find_effective_reach,
@@ -135,7 +135,7 @@ plt.tight_layout()
 plt.show()
 
 # %% [markdown]
-# ### Attention sink analysis
+# ### Attention sink examination
 #
 # The first few tokens (BOS and early tokens) absorb a disproportionate
 # share of attention probability mass across all query positions. This
