@@ -1,7 +1,7 @@
 """
 Publication-Quality Attention Heatmap Visualization.
 
-Loads saved attention weights (produced by attention_pattern_analysis.py or
+Loads saved attention weights (produced by attention_patterns.py or
 supplied as numpy arrays) and creates multi-panel heatmap figures showing
 different attention pattern types at various sequence lengths.
 
@@ -242,7 +242,7 @@ def plot_length_comparison(
     print(f"Saved length comparison ({pattern_type}) to {output_path}")
 
 
-def plot_sink_token_analysis(
+def plot_sink_token_study(
     seq_lengths: List[int],
     output_path: str,
     seed: int = 42,
@@ -304,7 +304,7 @@ def plot_sink_token_analysis(
     fig.tight_layout()
     fig.savefig(output_path, dpi=300, bbox_inches="tight")
     plt.close(fig)
-    print(f"Saved sink token analysis to {output_path}")
+    print(f"Saved sink token study to {output_path}")
 
 
 def main() -> None:
@@ -388,10 +388,10 @@ def main() -> None:
             seed=args.seed,
         )
 
-    # Sink token analysis
-    plot_sink_token_analysis(
+    # Sink token study
+    plot_sink_token_study(
         args.seq_lengths,
-        os.path.join(args.output_dir, "sink_token_analysis.png"),
+        os.path.join(args.output_dir, "sink_token_study.png"),
         seed=args.seed,
     )
 
