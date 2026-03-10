@@ -1,0 +1,44 @@
+# Configuration for Qwen2-7B context length analysis
+# Author: Ebenezer Tarubinga, Korea University
+
+model:
+  name: "Qwen/Qwen2-7B"
+  short_name: "Qwen2-7B"
+  num_layers: 28
+  num_heads: 28
+  num_kv_heads: 4  # GQA with 4 KV heads
+  head_dim: 128
+  hidden_dim: 3584
+  intermediate_size: 18944
+  vocab_size: 151936
+  max_position_embeddings: 32768
+  positional_encoding: "rope"
+  rope_base: 1000000.0  # Very high base for extended contexts
+  dtype: "bfloat16"
+
+context_lengths:
+  declared_max: 32768
+  test_lengths: [1024, 2048, 4096, 8192, 16384, 32768]
+
+analysis:
+  layers_to_analyze: [0, 4, 7, 10, 14, 18, 21, 24, 27]
+  attention_entropy: true
+  effective_span: true
+  sink_token_analysis: true
+  num_sink_tokens: 4
+
+benchmark:
+  tasks:
+    - needle
+    - multi_key
+    - variable_tracking
+  num_samples_per_length: 20
+  needle_depths: [0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0]
+  multi_key_num_keys: 5
+  variable_tracking_num_vars: 3
+  variable_tracking_num_updates: 8
+
+output:
+  figures_dir: "results/figures/qwen2_7b"
+  tables_dir: "results/tables/qwen2_7b"
+  save_attention_weights: false

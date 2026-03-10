@@ -1,0 +1,61 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg-info/
+*.egg
+dist/
+build/
+.eggs/
+
+# Virtual environments
+venv/
+env/
+.env/
+.venv/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Model weights
+*.bin
+*.safetensors
+*.pt
+*.pth
+models/
+checkpoints/
+
+# Data
+data/
+*.jsonl
+*.json
+!configs/*.yaml
+
+# Results (keep structure, ignore outputs)
+results/figures/*.png
+results/figures/*.pdf
+results/figures/*.svg
+results/tables/*.csv
+results/tables/*.json
+!results/**/.gitkeep
+
+# Logs
+*.log
+logs/
+wandb/
+runs/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# HuggingFace cache
+.cache/

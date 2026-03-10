@@ -1,0 +1,43 @@
+# Configuration for Llama-2-7B context length analysis
+# Author: Ebenezer Tarubinga, Korea University
+
+model:
+  name: "meta-llama/Llama-2-7b-hf"
+  short_name: "Llama-2-7B"
+  num_layers: 32
+  num_heads: 32
+  head_dim: 128
+  hidden_dim: 4096
+  vocab_size: 32000
+  max_position_embeddings: 4096
+  positional_encoding: "rope"
+  rope_base: 10000.0
+  dtype: "float16"
+
+context_lengths:
+  declared_max: 4096
+  test_lengths: [1024, 2048, 4096, 8192, 16384, 32768]
+  # Note: lengths beyond declared_max require RoPE scaling or NTK-aware interpolation
+
+analysis:
+  layers_to_analyze: [0, 4, 8, 12, 16, 20, 24, 28, 31]
+  attention_entropy: true
+  effective_span: true
+  sink_token_analysis: true
+  num_sink_tokens: 4
+
+benchmark:
+  tasks:
+    - needle
+    - multi_key
+    - variable_tracking
+  num_samples_per_length: 20
+  needle_depths: [0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0]
+  multi_key_num_keys: 5
+  variable_tracking_num_vars: 3
+  variable_tracking_num_updates: 8
+
+output:
+  figures_dir: "results/figures/llama2_7b"
+  tables_dir: "results/tables/llama2_7b"
+  save_attention_weights: false  # Large files; enable selectively
