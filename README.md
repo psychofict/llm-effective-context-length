@@ -142,21 +142,6 @@ This work is based on the STRING paper:
 
 Original implementation: [https://github.com/HKUNLP/STRING](https://github.com/HKUNLP/STRING)
 
-This reproduction study was conducted at Korea University, Department of Artificial
-Intelligence, under the supervision of Prof. Seong-Whan Lee.
-
-## Citation
-
-```bibtex
-@misc{tarubinga2025contextlength,
-  title   = {Investigating Why the Effective Context Length of LLMs Falls Short:
-             Reproduction Study and Extended Evaluation},
-  author  = {Tarubinga, Ebenezer},
-  year    = {2025},
-  note    = {Based on STRING by An et al. (ICLR 2025). Korea University M.Sc. AI,
-             supervised by Prof. Seong-Whan Lee.}
-}
-```
 
 ## License
 
